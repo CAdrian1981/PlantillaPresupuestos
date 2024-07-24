@@ -1,90 +1,124 @@
 
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>REMISIÓN</title>
-		<link rel="stylesheet" href="https://fredyortegon30.github.io/invoice/style.css">
-		<link rel="license" href="https://www.opensource.org/licenses/mit-license/">
-	</head>
-	<body>
-		<header>
-			<h1>REMISIÓN</h1>
-			<address>
-				<p>MI EMPRESA</p>
-				<p>NIT 1111111111<br>Calle 11- 10-33</p>
-				<p>Pereira</p>
-			</address>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta de Servicios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .date {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .greeting {
+            margin-bottom: 20px;
+        }
+        .offer {
+            background-color: #f0f0f0;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .service {
+            display: flex;
+            margin-bottom: 30px;
+        }
+        .service-image {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .service-details {
+            flex: 2;
+        }
+        .terms {
+            font-size: 0.9em;
+            margin-top: 30px;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="placeholder-logo.png" alt="Logo de la empresa">
+    </div>
+    
+    <div class="date">
+        <span id="Fecha"></span>
+    </div>
+    
+    <div class="greeting">
+        <p>Hola <span id="Cliente_Nombre_comercial"></span>,</p>
+    </div>
+    
+    <div class="offer">
+        <p>Esta oferta durante los 3 primeros meses tendrá un precio de <span id="Precio_durante_3_meses"></span></p>
+        <p>del mes 4 al mes 12 será de <span id="Precio_del_mes_4_al_mes_12"></span></p>
+        <p>y después de las ofertas <span id="Precio_despues_de_ofertas"></span></p>
+        <p><span id="Total_descuentos"></span></p>
+    </div>
+    
+    <p>A continuación, te detallamos las características del servicio por el que nos has consultado:</p>
+    
+    <div class="service">
+        <div class="service-image">
+            <img src="placeholder-service.png" alt="Imagen del servicio">
+        </div>
+        <div class="service-details">
+            <h3 id="Terminal_Terminal"></h3>
+            <p id="ref"></p>
+            <p id="Incluye"></p>
+            <p id="Terminal_Condiciones"></p>
+        </div>
+    </div>
+    
+    <div class="terms">
+        <h4>TÉRMINOS Y CONDICIONES DE PROTECCIÓN DE DATOS</h4>
+        <p>Los datos facilitados a través del presente formulario serán tratados por el responsable del tratamiento <span id="PdV_NOMBRE_FISCAL"></span>, con NIF <span id="PdV_NIF"></span>, <span id="Tienda_direccion"></span></p>
+        <!-- Resto de los términos y condiciones -->
+    </div>
+    
+    <div class="footer">
+        <p>*Oferta válida durante el período de vigencia de la promoción aplicada.</p>
+        <p>CLIENTE</p>
+        <p id="Tienda"></p>
+        <p id="Tienda_telefono"></p>
+        <p id="PdV_Direccion_completa"></p>
+    </div>
 
-<div style="float: right;">
-    <img alt="" src="https://acortar.link/caSNRS" style="width: 100px; height: 100px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
-</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var params = new URLSearchParams(window.location.search);
 
+            var ids = [
+                'Fecha', 'Cliente_Nombre_comercial', 'Precio_durante_3_meses', 
+                'Precio_del_mes_4_al_mes_12', 'Precio_despues_de_ofertas', 
+                'Total_descuentos', 'Terminal_Terminal', 'ref', 'Incluye', 
+                'Terminal_Condiciones', 'PdV_NOMBRE_FISCAL', 'PdV_NIF', 
+                'Tienda_direccion', 'Tienda', 'Tienda_telefono', 'PdV_Direccion_completa'
+            ];
 
-		</header>
-		<article>
-			<h1>Recipient</h1>
-			<address>
-				<p>&lt;&lt;[id_cliente].[Nombre_cliente]&gt;&gt;<br>-</p>
-                <p class="small-text"><br>Email: &lt;&lt;[id_cliente].[Email]&gt;&gt;</p>
-                <p class="small-text">Cel:&lt;&lt;[id_cliente].[Celular]&gt;&gt;</p>
-			</address>
-			<table class="meta">
-				<tr>
-					<th><span>Remisión #</span></th>
-					<td><span>&lt;&lt;[N_factura]&gt;&gt;</span></td>
-				</tr>
-				<tr>
-					<th><span>Fecha</span></th>
-					<td><span>&lt;&lt;[Fecha]&gt;&gt;</span></td>
-				</tr>
-				<tr>
-					<th><span>Total</span></th>
-					<td><span>&lt;&lt;[TOTAL VENTA]&gt;&gt;</span></td>
-				</tr>
-			</table>
-			<table class="inventory">
-				<thead>
-					<tr>
-						<th><span>Producto</span></th>
-						<th><span>Descripcion</span></th>
-						<th><span>Valor ud</span></th>
-						<th><span>Cantidad</span></th>
-						<th><span>Subtotal</span></th>
-					</tr>
-				</thead>
-				<tbody>
-				<p><span>&lt;&lt;Start: SELECT(DETALLE_VENTAS[id_detalle],[id_encabezado_venta]=[id_encabezado]) &gt;&gt;</span></p>
-					<tr>
-						<td><a class="cut">-</a>&lt;&lt;[id_producto].[Nombre de producto]&gt;&gt;</td>
-						<td><span></span></td>
-				        <td><span>&lt;&lt;[Valor_unitario]&gt;&gt;</span></td>
-						<td><span>&lt;&lt;[Cantidad]&gt;&gt;</span></td>
-						<td><span>&lt;&lt;[Subtotal]&gt;&gt;</span></td>
-					</tr>
-				<p><span>&lt;&lt; end &gt;&gt;</span></p>
-				</tbody>
-			</table>
-			<a class="add">+</a>
-			<table class="balance">
-				<tr>
-					<th><span>Total</span></th>
-					<td><span>&lt;&lt;[TOTAL VENTA]&gt;&gt;</span></td>
-				</tr>
-				<tr>
-					<th><span>Otros conceptos</span></th>
-					<td><span data-prefix="$"></span><span>0.00</span></td>
-				</tr>
-				<tr>
-					<th><span>Total a pagar</span></th>
-					<td><span>&lt;&lt;[TOTAL VENTA]&gt;&gt;</span></td>
-				</tr>
-			</table>
-		</article>
-		<aside>
-			<h1><span>Notas adicionales</span></h1>
-			<div>
-				<p>Pagos a la cuenta de ahorros bancolombia # </p>
-			</div>
-		</aside>
-	</body>
+            ids.forEach(function(id) {
+                var element = document.getElementById(id);
+                if (element) {
+                    var value = params.has(id) ? params.get(id) : "---";
+                    element.textContent = value;
+                }
+            });
+        });
+    </script>
+</body>
 </html>
