@@ -1,124 +1,63 @@
-
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oferta de Servicios</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .logo {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .date {
-            text-align: right;
-            margin-bottom: 20px;
-        }
-        .greeting {
-            margin-bottom: 20px;
-        }
-        .offer {
-            background-color: #f0f0f0;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        .service {
-            display: flex;
-            margin-bottom: 30px;
-        }
-        .service-image {
-            flex: 1;
-            margin-right: 20px;
-        }
-        .service-details {
-            flex: 2;
-        }
-        .terms {
-            font-size: 0.9em;
-            margin-top: 30px;
-        }
-        .footer {
-            margin-top: 30px;
-            text-align: center;
-            font-size: 0.8em;
-        }
-    </style>
-</head>
-<body>
-    <div class="logo">
-        <img src="placeholder-logo.png" alt="Logo de la empresa">
-    </div>
-    
-    <div class="date">
-        <span id="Fecha"></span>
-    </div>
-    
-    <div class="greeting">
-        <p>Hola <span id="Cliente_Nombre_comercial"></span>,</p>
-    </div>
-    
-    <div class="offer">
-        <p>Esta oferta durante los 3 primeros meses tendrá un precio de <span id="Precio_durante_3_meses"></span></p>
-        <p>del mes 4 al mes 12 será de <span id="Precio_del_mes_4_al_mes_12"></span></p>
-        <p>y después de las ofertas <span id="Precio_despues_de_ofertas"></span></p>
-        <p><span id="Total_descuentos"></span></p>
-    </div>
-    
-    <p>A continuación, te detallamos las características del servicio por el que nos has consultado:</p>
-    
-    <div class="service">
-        <div class="service-image">
-            <img src="placeholder-service.png" alt="Imagen del servicio">
-        </div>
-        <div class="service-details">
-            <h3 id="Terminal_Terminal"></h3>
-            <p id="ref"></p>
-            <p id="Incluye"></p>
-            <p id="Terminal_Condiciones"></p>
-        </div>
-    </div>
-    
-    <div class="terms">
-        <h4>TÉRMINOS Y CONDICIONES DE PROTECCIÓN DE DATOS</h4>
-        <p>Los datos facilitados a través del presente formulario serán tratados por el responsable del tratamiento <span id="PdV_NOMBRE_FISCAL"></span>, con NIF <span id="PdV_NIF"></span>, <span id="Tienda_direccion"></span></p>
-        <!-- Resto de los términos y condiciones -->
-    </div>
-    
-    <div class="footer">
-        <p>*Oferta válida durante el período de vigencia de la promoción aplicada.</p>
-        <p>CLIENTE</p>
-        <p id="Tienda"></p>
-        <p id="Tienda_telefono"></p>
-        <p id="PdV_Direccion_completa"></p>
-    </div>
-
+    <title>Presupuesto</title>
+    <link rel="stylesheet" href="styles.css">
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var params = new URLSearchParams(window.location.search);
-
-            var ids = [
-                'Fecha', 'Cliente_Nombre_comercial', 'Precio_durante_3_meses', 
-                'Precio_del_mes_4_al_mes_12', 'Precio_despues_de_ofertas', 
-                'Total_descuentos', 'Terminal_Terminal', 'ref', 'Incluye', 
-                'Terminal_Condiciones', 'PdV_NOMBRE_FISCAL', 'PdV_NIF', 
-                'Tienda_direccion', 'Tienda', 'Tienda_telefono', 'PdV_Direccion_completa'
-            ];
-
-            ids.forEach(function(id) {
-                var element = document.getElementById(id);
-                if (element) {
-                    var value = params.has(id) ? params.get(id) : "---";
-                    element.textContent = value;
-                }
-            });
+            const urlParams = new URLSearchParams(window.location.search);
+            document.querySelector('.cliente').textContent = urlParams.get('cliente') || 'N/A';
+            document.querySelector('.nombre_comercial').textContent = urlParams.get('nombre_comercial') || 'N/A';
+            document.querySelector('.operador').textContent = urlParams.get('operador') || 'N/A';
+            document.querySelector('.fecha').textContent = urlParams.get('fecha') || 'N/A';
+            document.querySelector('.precio_3_meses').textContent = urlParams.get('precio_3_meses') || 'N/A';
+            document.querySelector('.precio_4_12_meses').textContent = urlParams.get('precio_4_12_meses') || 'N/A';
+            document.querySelector('.precio_despues_ofertas').textContent = urlParams.get('precio_despues_ofertas') || 'N/A';
+            document.querySelector('.total_descuentos').textContent = urlParams.get('total_descuentos') || 'N/A';
+            document.querySelector('.servicios').textContent = urlParams.get('servicios') || 'N/A';
+            document.querySelector('.terminal').textContent = urlParams.get('terminal') || 'N/A';
+            document.querySelector('.modelo').textContent = urlParams.get('modelo') || 'N/A';
+            document.querySelector('.condiciones_terminal').textContent = urlParams.get('condiciones_terminal') || 'N/A';
+            document.querySelector('.tienda').textContent = urlParams.get('tienda') || 'N/A';
+            document.querySelector('.tienda_telefono').textContent = urlParams.get('tienda_telefono') || 'N/A';
+            document.querySelector('.direccion_completa').textContent = urlParams.get('direccion_completa') || 'N/A';
+            document.querySelector('.foto_logo').src = urlParams.get('foto_logo') || '';
         });
     </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="" alt="Logo" class="logo foto_logo">
+            <div class="details">
+                <p><strong>Operador:</strong> <span class="operador"></span></p>
+                <p><strong>Fecha:</strong> <span class="fecha"></span></p>
+            </div>
+        </div>
+        <div class="greeting">
+            <p>Hola <span class="cliente"></span>, <span class="nombre_comercial"></span></p>
+        </div>
+        <div class="offer-details">
+            <p>Esta oferta durante los 3 primeros meses tendrá un precio de <span class="precio_3_meses"></span> €, del mes 4 al mes 12 será de <span class="precio_4_12_meses"></span> €, y después de las ofertas <span class="precio_despues_ofertas"></span> €</p>
+            <p><strong>Total descuentos:</strong> <span class="total_descuentos"></span></p>
+        </div>
+        <div class="service-details">
+            <h2>A continuación, te detallamos las características del servicio por el que nos has consultado:</h2>
+            <p><strong>Servicios:</strong> <span class="servicios"></span></p>
+            <p><strong>Terminal:</strong> <span class="terminal"></span></p>
+            <p><strong>Modelo:</strong> <span class="modelo"></span></p>
+            <p><strong>Condiciones terminal:</strong> <span class="condiciones_terminal"></span></p>
+        </div>
+        <div class="footer">
+            <p><strong>Tienda:</strong> <span class="tienda"></span></p>
+            <p><strong>Teléfono:</strong> <span class="tienda_telefono"></span></p>
+            <p><strong>Dirección:</strong> <span class="direccion_completa"></span></p>
+        </div>
+    </div>
+</body>
+</html>
+
 </body>
 </html>
